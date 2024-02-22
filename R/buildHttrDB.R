@@ -15,16 +15,14 @@ buildHttrDB <- function(do.clean=F,
                         method="gsea",
                         hccut=0.9,
                         tccut=1,
-                        username="rjudson",
+                        user="rjudson",
                         password) {
   printCurrentFunction(paste(sigset,method))
-  setDBConn(username,password)
+  setDBConn(user=user,password=password)
   db = "res_httr"
   datestamp = runQuery("select CURRENT_TIMESTAMP",db)[1,1]
 
   dslist = c(
-    "MCF7_pilot_DMEM_6hr_pilot_normal_pe_1",
-    "MCF7_pilot_DMEM_12hr_pilot_normal_pe_1",
     "MCF7_pilot_DMEM_24hr_pilot_normal_pe_1"
   )
   # dslist = c(
@@ -72,11 +70,11 @@ buildHttrDB <- function(do.clean=F,
     mat$datestamp = datestamp
     runInsertTable(mat,"study",db=db,do.halt=T,verbose=F,get.id=T)
 
-    file = paste0("../input/signatures/signatureDB.RData")
+    file = paste0("data/signatures/signatureDB.RData")
     load(file=file)
     rownames(sigdb) = sigdb$signature
 
-    file = paste0("../input/signatures/",sigcatalog,".xlsx")
+    file = paste0("data/signatures/",sigcatalog,".xlsx")
     catalog = read.xlsx(file)
     rownames(catalog) = catalog$signature
 
