@@ -1,11 +1,16 @@
 Package: httrDB
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Build the HTTr Database For Use by The CCD
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Ricahrd Judson
+Maintainer: Richard Judson <judson.richard@epa.gov>
+Description: This package loads signature concentration-response data into the 
+  httr database so that it can be picked up by the CompTox Dashboard. The required
+  files are the concentration-response data fiels and the signature catalogs. Currently,
+  there are jsuta few files in the data directory to show how this runs. When this is 
+  really running, the data directory may need to get changed. The only function
+  that needs to be run is buildHTTrDB.R. The MySQL Workbench file to construct
+  the empty database is in the mysql folder.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
